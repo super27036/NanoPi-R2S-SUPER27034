@@ -1,5 +1,5 @@
 # 中文简体 | [English](https://github.com/DHDAXCW/NanoPi-R4S-2021/blob/main/EngLish.md)
-# NanoPi-R4S-2021 每天自动更新插件和内核版本。
+# NanoPi-R2S-2021 每天自动更新插件和内核版本。
 # 我使用的机场 https://i.ok4.icu/ExU6  稳定
 ## 👉使用本固件前，请严格遵守国家互联网使用相关法律规定,不要违反国家法律规定！👈
 ## 强烈推荐三星TF卡\海康TF卡。哪怕是很难刷上的固件，只有三星刷上可以开机。
@@ -15,18 +15,14 @@
 ### 默认编译  
 
 - 用户名：root 密码：password  管理IP：192.168.11.1
-- 下载地址： https://github.com/DHDAXCW/NanoPi-R4S-2021/releases
+- 下载地址： https://github.com/DHDAXCW/NanoPi-R2S-2021/releases
 - x86_64固件下载 https://github.com/DHDAXCW/lede/releases
 ### - Docker：正式版带docker，有超频，带有docker插件。（对passwall的udp要求很高，不要刷docker版本）
 - 电报群：https://t.me/DHDAXCW
 - X86固件 ：[点击链接下载](https://github.com/DHDAXCW/lede/releases)
 # 在线升级
 - 复制以下代码，在TTYD终端执行，过程中不得离开，否则还得重新下载，请刷ext4格式明天再升级
-### 该升级支持4G版，1G版
-- 多版本在里面，自己选 👇ok 
-```
-wget https://raw.githubusercontent.com/lone-wind/scripts/main/onlineupdate.sh && sh onlineupdate.sh
-```
+
 # 插件展示
  ![Alt text](data/20.jpg?raw=true "Title")
 ## 提示
