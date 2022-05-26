@@ -1,18 +1,18 @@
-name: NanoPi-R4S-boos-Docker
+name: NanoPi-R4S-Plus
 
 on:
   repository_dispatch:
   workflow_dispatch:
-  # schedule:
-    # - cron: 0 17 * * *
+  #schedule:
+    #- cron: 0 17 * * *
   # watch:
   #   types: started
 
 env:
-  REPO_URL: https://github.com/DHDAXCW/op
-  REPO_BRANCH: master
-  CONFIG_FILE: configs/boos/boos-docker.config
-  DIY_SH: scripts/boos.sh
+  REPO_URL: https://github.com/DHDAXCW/kernel-5.4
+  REPO_BRANCH: tast
+  CONFIG_FILE: configs/lean/lean.config
+  DIY_SH: scripts/lean.sh
   KMODS_IN_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
@@ -20,7 +20,7 @@ env:
 jobs:
   Build:
     runs-on: self-hosted
-    if: github.repository == 'DHDAXCW/NanoPi-R4S'
+    if: github.repository == 'DHDAXCW/NanoPi-R2S-rk3328'
     outputs:
       OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
       PLATFORM: ${{ steps.compile.outputs.PLATFORM }}
@@ -32,7 +32,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@main
-    - name: Show system
+
+    - name: Initialization Environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
       run: |
         echo -e "Total CPU cores\t: $(nproc)"
         cat /proc/cpuinfo | grep 'model name'
@@ -45,7 +48,10 @@ jobs:
     - name: Clone Source Code
       run: |
         df -hT $PWD
+        git config --global user.email "git@github.com"
+        git config --global user.name "GitHub"
         git clone $REPO_URL -b $REPO_BRANCH openwrt
+        cd openwrt
     - name: Update Feeds
       id: update
       run: |
@@ -53,15 +59,18 @@ jobs:
         echo "OPENWRTROOT=$PWD" >> $GITHUB_ENV
         echo "::set-output name=OPENWRTROOT::$(echo $PWD)"
         mkdir customfeeds
-        git clone --depth=1 https://github.com/Boos4721/packages customfeeds/packages
-        git clone --depth=1 https://github.com/Boos4721/luci customfeeds/luci
+        git clone --depth=1 https://github.com/coolsnowwolf/packages customfeeds/packages
+        git clone --depth=1 https://github.com/coolsnowwolf/luci customfeeds/luci
         chmod +x ../scripts/*.sh
         ../scripts/hook-feeds.sh
-    
+    - name: MOD index file
+      run: |
+         cd $OPENWRTROOT/package/lean/autocore/files/arm
+         sed -i '/Load Average/i\\t\t<tr><td width="33%"><%:Telegram %></td><td><a href="https://t.me/DHDAXCW"><%:电报交流群%></a></td></tr>' index.htm
     - name: Install Feeds
       run: |
         cd $OPENWRTROOT
-        ./scripts/feeds install -a -f
+        ./scripts/feeds install -a
     - name: Load Custom Configuration
       run: |
         [ -e files ] && mv files $OPENWRTROOT/files
@@ -112,22 +121,41 @@ jobs:
       if: steps.compile.outputs.COMPILE_STATUS == 'success'
       id: generate
       run: |
+        cd configs/opkg
+        sed -i "s/subtarget/$SUBTARGET/g" distfeeds*.conf
+        sed -i "s/target\//$TARGET\//g" distfeeds*.conf
+        sed -i "s/platform/$PLATFORM/g" distfeeds*.conf
         cd $OPENWRTROOT
         mkdir -p files/etc/uci-defaults/
         cp ../scripts/init-settings.sh files/etc/uci-defaults/99-init-settings
+        mkdir -p files/etc/opkg
+        cp ../configs/opkg/distfeeds-packages-server.conf files/etc/opkg/distfeeds.conf.server
+        mkdir -p files/etc/opkg/keys
+        cp ../configs/opkg/1035ac73cc4e59e3 files/etc/opkg/keys/1035ac73cc4e59e3
+        if "$KMODS_IN_FIRMWARE" = 'true'
+        then
+            mkdir -p files/www/snapshots
+            cp -r bin/targets files/www/snapshots
+            cp ../configs/opkg/distfeeds-18.06-local.conf files/etc/opkg/distfeeds.conf
+        else
+            cp ../configs/opkg/distfeeds-18.06-remote.conf files/etc/opkg/distfeeds.conf
+        fi
+        cp files/etc/opkg/distfeeds.conf.server files/etc/opkg/distfeeds.conf.mirror
+        sed -i "s/http:\/\/192.168.123.100:2345\/snapshots/https:\/\/openwrt.cc\/snapshots\/$(date +"%Y-%m-%d")\/lean/g" files/etc/opkg/distfeeds.conf.mirror
         make package/install -j$(nproc) || make package/install -j1 V=s
         make target/install -j$(nproc) || make target/install -j1 V=s
-        rm -rf bin/targets/rockchip/armv8/openwrt-rockchip-armv8-embedfire_doornet2.manifest
-        rm -rf bin/targets/rockchip/armv8/openwrt-rockchip-armv8-embedfire_doornet2-rootfs.tar.gz
+        rm -rf bin/targets/rockchip/armv8/openwrt-rockchip-armv8-friendlyarm_nanopi-r4s.manifest
+        rm -rf bin/targets/rockchip/armv8/openwrt-rockchip-armv8-friendlyarm_nanopi-r4s-rootfs.tar.gz
         rm -rf bin/targets/rockchip/armv8/config.buildinfo
         rm -rf bin/targets/rockchip/armv8/packages-server.zip
         make checksum
         echo "::set-output name=GENERATE_STATUS::success"
+
     - name: Generate release tag
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-          echo "::set-output name=release_tag::$(date +"%Y.%m.%d")-Lean1"
+          echo "::set-output name=release_tag::$(date +"%Y.%m.%d")-Lean3"
           echo "::set-output name=release_date::$(date +"%Y.%m.%d")"
           touch release.txt
           echo "后台地址：192.168.11.1" >> release.txt
@@ -138,7 +166,7 @@ jobs:
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-          name: ${{ steps.tag.outputs.release_date }} NanoPi-R4S-linux-5.10_全插件_docker_超频
+          name: ${{ steps.tag.outputs.release_date }} NanoPi-R4S-linux-5.15_正式版_全插件
           tag_name: ${{ steps.tag.outputs.release_tag }}
           body_path: release.txt
           files: ${{ env.FIRMWARE }}/*
