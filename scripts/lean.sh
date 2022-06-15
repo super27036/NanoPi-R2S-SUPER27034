@@ -1,4 +1,11 @@
 #!/bin/bash
+#=================================================
+# System Required: Linux
+# Version: 1.0
+# Lisence: MIT
+# Author: SuLingGG
+# Blog: https://mlapp.cn
+#=================================================
 
 # Clone community packages to package/community
 mkdir package/community
@@ -79,6 +86,12 @@ svn co https://github.com/openwrt/packages/trunk/utils/apk
 svn co https://github.com/zcy85611/Packages/trunk/luci-udptools
 svn co https://github.com/zcy85611/Packages/trunk/udp2raw
 svn co https://github.com/zcy85611/Packages/trunk/udpspeeder
+
+# Add extra wireless drivers
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/kernel/rtl8812au-ac
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/kernel/rtl8188eu
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/kernel/rtl8192du
+svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/kernel/rtl88x2bu
 
 # Add luci-app-poweroff
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff
