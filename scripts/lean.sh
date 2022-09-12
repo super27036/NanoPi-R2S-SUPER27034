@@ -11,6 +11,8 @@
 mkdir package/community
 pushd package/community
 
+# Add luci-app-irqbalance by QiuSimons https://github.com/QiuSimons/OpenWrt-Add
+svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-irqbalance
 
 # Add luci-app-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
