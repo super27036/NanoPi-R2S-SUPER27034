@@ -7,6 +7,12 @@
 # Blog: https://mlapp.cn
 #=================================================
 
+# alist
+git clone https://github.com/sbwml/luci-app-alist package/alist
+pushd package/alist
+git reset --hard ee858b79c07af9994e4476dc7c08593c4610485d
+popd
+
 # Clone community packages to package/community
 mkdir package/community
 pushd package/community
@@ -22,9 +28,6 @@ svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-pass
 git clone --depth=1 https://github.com/Lienol/openwrt-package
 rm -rf openwrt-package/verysync
 rm -rf openwrt-package/luci-app-verysync
-
-# alist
-git clone https://github.com/sbwml/openwrt-alist --depth=1
 
 # Add luci-app-ssr-plus
 git clone --depth=1 https://github.com/fw876/helloworld
@@ -66,12 +69,8 @@ rm -rf ../../customfeeds/luci/applications/luci-app-dockerman
 git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
 git clone --depth=1 https://github.com/lisaac/luci-lib-docker
 
-# Add luci-theme-argon
-git clone --depth=1 -b 18.06 https://github.com/jerrykuku/luci-theme-argon
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
-rm -rf ../../customfeeds/luci/themes/luci-theme-argon
-rm -rf ./luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
-cp -f $GITHUB_WORKSPACE/data/bg1.jpg luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+# Add luci-theme
+git clone https://github.com/DHDAXCW/theme
 
 # Add subconverter
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
