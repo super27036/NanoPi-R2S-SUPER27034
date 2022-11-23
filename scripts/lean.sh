@@ -21,7 +21,7 @@ svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-irqbalance
 
 # Add luci-app-passwall
 git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall
-svn co https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall
+svn export https://github.com/xiaorouji/openwrt-passwall/branches/luci/luci-app-passwall
 
 # Add Lienol's Packages
 git clone --depth=1 https://github.com/Lienol/openwrt-package
@@ -43,14 +43,14 @@ git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr
 git clone --depth=1 https://github.com/ysc3839/luci-proto-minieap
 
 # Add OpenClash
-svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
+svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
 
 # Add luci-app-adguardhome
-svn co https://github.com/Boos4721/OpenWrt-Packages/trunk/luci-app-adguardhome
+svn export https://github.com/DHDAXCW/openwrt-packages/trunk/luci-app-adguardhome
 
 # Add ddnsto & linkease
-svn co https://github.com/linkease/nas-packages-luci/trunk/luci/luci-app-ddnsto
-svn co https://github.com/linkease/nas-packages/trunk/network/services/ddnsto
+svn export https://github.com/linkease/nas-packages-luci/trunk/luci/luci-app-ddnsto
+svn export https://github.com/linkease/nas-packages/trunk/network/services/ddnsto
 
 # Add luci-app-onliner (need luci-app-nlbwmon)
 git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner
@@ -76,24 +76,24 @@ git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 
 # Add luci-app-smartdns & smartdns
-svn co https://github.com/281677160/openwrt-package/trunk/luci-app-smartdns
+svn export https://github.com/281677160/openwrt-package/trunk/luci-app-smartdns
 
 # Add luci-app-services-wolplus
-svn co https://github.com/msylgj/OpenWrt_luci-app/trunk/luci-app-services-wolplus
+svn export https://github.com/msylgj/OpenWrt_luci-app/trunk/luci-app-services-wolplus
 
 # Add apk (Apk Packages Manager)
-svn co https://github.com/openwrt/packages/trunk/utils/apk
+svn export https://github.com/openwrt/packages/trunk/utils/apk
 
 # Add luci-udptools
-svn co https://github.com/zcy85611/Packages/trunk/luci-udptools
-svn co https://github.com/zcy85611/Packages/trunk/udp2raw
-svn co https://github.com/zcy85611/Packages/trunk/udpspeeder
+svn export https://github.com/zcy85611/Packages/trunk/luci-udptools
+svn export https://github.com/zcy85611/Packages/trunk/udp2raw
+svn export https://github.com/zcy85611/Packages/trunk/udpspeeder
 
 # Add extra wireless drivers
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/kernel/rtl8812au-ac
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/kernel/rtl8188eu
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/kernel/rtl8192du
-svn co https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/kernel/rtl88x2bu
+svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/kernel/rtl8812au-ac
+svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/kernel/rtl8188eu
+svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/kernel/rtl8192du
+svn export https://github.com/immortalwrt/immortalwrt/branches/openwrt-18.06-k5.4/package/kernel/rtl88x2bu
 
 # Add luci-app-poweroff
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff
@@ -104,13 +104,13 @@ git clone --depth=1 https://github.com/DHDAXCW/OpenAppFilter
 # Add luci-aliyundrive-webdav
 rm -rf ../../customfeeds/luci/applications/luci-app-aliyundrive-webdav 
 rm -rf ../../customfeeds/luci/applications/aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav
-svn co https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav
+svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav
+svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav
 popd
 
 # Add Pandownload
 pushd package/lean
-svn co https://github.com/immortalwrt/packages/trunk/net/pandownload-fake-server
+svn export https://github.com/immortalwrt/packages/trunk/net/pandownload-fake-server
 popd
 
 # Mod zzz-default-settings
@@ -133,9 +133,6 @@ sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.11.1/g' package/base-files/files/bin/config_generate
 
-# 删除定时coremark
-rm -rf ./customfeeds/packages/utils/coremark
-svn co https://github.com/DHDAXCW/packages/trunk/utils/coremark customfeeds/packages/utils/coremark
 # 风扇脚本
 sed -i "s/enabled '0'/enabled '1'/g" feeds/packages/utils/irqbalance/files/irqbalance.config
 wget -P target/linux/rockchip/armv8/base-files/etc/init.d/ https://github.com/friendlyarm/friendlywrt/raw/master-v19.07.1/target/linux/rockchip-rk3328/base-files/etc/init.d/fa-rk3328-pwmfan
