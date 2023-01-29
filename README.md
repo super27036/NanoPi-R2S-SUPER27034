@@ -2,7 +2,12 @@
 # NanoPi-R2S-2021 每天自动更新插件和内核版本。
 # 机场推荐 [ENET--IEPL内网专线接入](https://www.easy2022.com/#/register?code=Ut7iWMrk)
 ## 👉使用本固件前，请严格遵守国家互联网使用相关法律规定,不要违反国家法律规定！👈
-## 强烈推荐三星TF卡\海康TF卡。哪怕是很难刷上的固件，只有三星刷上可以开机。
+
+### 源代码地址
+- lede https://github.com/DHDAXCW/lede-rockchip
+- Luci https://github.com/DHDAXCW/luci
+- packages https://github.com/DHDAXCW/packages
+
 ### 固件分类 在[releases](https://github.com/DHDAXCW/NanoPi-R2S-rk3328/releases)有备注关键词
 - 正式版（含超频）对折腾的，可以选择，电压一定要考虑。超频都是升压的，会造成不稳定的。比如跑cpu测试容易升压等。
 - Docker版 含Docker插件，会导致udp转发失效 慎用哦，只要别开passwall的udp，啥都不影响使用！
@@ -29,19 +34,9 @@
 
 # 插件展示
  ![Alt text](data/20.jpg?raw=true "Title")
-## 提示
- - 我的固件加了动态超频，不管热不热这是取决后台运行程序在跑什么。
- - 感觉很热  就加风扇，推荐 风扇6cm×6cm，薄1cm，usb也行 或者端子线zh1.5（风扇脚本目前在建设中）
+
 # [赏个鸡腿吧](https://afdian.net/@dhdaxcw/plan)
 ### https://afdian.net/@dhdaxcw/plan
-
-请不要fork我项目，因为yml文件中已托管到我本地服务器，目的是为了加速编译。
-如果想fork自己编译，那就请到yml文件中修改下面
-```bash
-30行 runs-on: self-hosted 改为 runs-on: ubuntu-20.04
-```
-另外，如果改上面的，那还要改编译线程，我默认是-j72
-改好就可以用github的机器编译了
 
 ## 鸣谢
 
