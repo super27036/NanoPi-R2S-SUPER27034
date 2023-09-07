@@ -23,6 +23,10 @@ env:
 jobs:
   Build:
     runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+      packages: write
+      
     outputs:
       OPENWRTROOT: ${{ steps.update.outputs.OPENWRTROOT }}
       PLATFORM: ${{ steps.compile.outputs.PLATFORM }}
