@@ -92,6 +92,11 @@ jobs:
         cd $OPENWRTROOT
         ./scripts/feeds install -a
 
+    - name: Copy FILES
+      run: |
+        cd openwrt
+        cp -rf ../PATCH/R2S/files ./files
+        
     - name: Load Custom Configuration
       run: |
         [ -e files ] && mv files $OPENWRTROOT/files
