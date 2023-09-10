@@ -124,7 +124,8 @@ sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generat
 sed -i 's/OpenWrt/SUPERouter/g' package/base-files/files/bin/config_generate
 # Password
 sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/$1$S2TRFyMU$E8fE0RRKR0jNadn3YLrSQ0:18690:0:99999:7:::/g' package/lean/default-settings/files/zzz-default-settings
-
+# Disable ipv6
+sed -i 's/def_bool y/def_bool n/g' config/Config-build.in
 
 # 风扇脚本
 sed -i "s/enabled '0'/enabled '1'/g" feeds/packages/utils/irqbalance/files/irqbalance.config
