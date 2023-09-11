@@ -12,7 +12,7 @@ on:
   repository_dispatch:  # 当使用 GitHub API 的 repository_dispatch 事件时触发
   workflow_dispatch:  # 当手动运行工作流程时触发
   schedule:  # 根据时间表触发
-  - cron: 20 09 * * 6
+  - cron: 20 09 * * 1
 
 env:
   REPO_URL: https://github.com/DHDAXCW/lede-rockchip
