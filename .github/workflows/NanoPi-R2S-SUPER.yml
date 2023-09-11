@@ -8,10 +8,12 @@
 
 name: NanoPi-R2S-SUPER
 
-on:
-  workflow_dispatch:  # 当手动运行工作流程时触发
-  schedule:  # 根据时间表触发
-  - cron: 22 50 * * 1
+on: 
+  repository_dispatch:
+  workflow_dispatch:
+
+  schedule:
+    - cron: 51 22 * * 1
 
 env:
   REPO_URL: https://github.com/DHDAXCW/lede-rockchip
