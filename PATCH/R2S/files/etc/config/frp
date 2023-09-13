@@ -35,7 +35,7 @@ config proxy
 	option domain_type 'custom_domains'
 	option custom_domains 'r2stestclash.frp.super27034.top'
 	option local_ip '192.168.5.1'
-	option local_port '80'
+	option local_port '9090'
 	option proxy_protocol_version 'disable'
 	option use_encryption '1'
 	option use_compression '1'
