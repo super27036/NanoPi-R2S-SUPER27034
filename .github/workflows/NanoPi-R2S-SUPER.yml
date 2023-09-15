@@ -51,14 +51,15 @@ jobs:
 
         # all of these default to true, but feel free to set to
         # "false" if necessary for your workflow
-        codeql-images: false
+        codeql-images: true
         android: true
         # android: true is good
-        dotnet: false
-        haskell: false
-        large-packages: true
-        docker-images: false
-        swap-storage: false
+        dotnet: true
+        haskell: true
+        large-packages: false
+        # not good
+        docker-images: true
+        swap-storage: true
         
     - name: Checkout
       uses: actions/checkout@v3
