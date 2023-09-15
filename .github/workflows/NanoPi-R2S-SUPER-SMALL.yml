@@ -47,16 +47,17 @@ jobs:
         # this might remove tools that are actually needed,
         # if set to "true" but frees about 6 GB
         tool-cache: true
-
+        
         # all of these default to true, but feel free to set to
         # "false" if necessary for your workflow
-        codeql-images: false
-        android: false
-        dotnet: false
-        haskell: false
+        codeql-images: true
+        android: true
+        # android: true is good
+        dotnet: true
+        haskell: true
         large-packages: false
-        docker-images: false
-        swap-storage: false
+        docker-images: true
+        swap-storage: true
         
     - name: Checkout
       uses: actions/checkout@v3
