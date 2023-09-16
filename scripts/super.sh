@@ -75,7 +75,12 @@ git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner
 
 # Add luci-theme
 git clone https://github.com/DHDAXCW/theme
-git clone --depth=1 https://github.com/jerrykuku/luci-app-argon-config
+
+rm -rf ../../customfeeds/luci/applications/luci-theme-argon
+rm -rf ../../customfeeds/luci/applications/luci-app-argon-config
+mkdir luci-theme-argon-18.06 luci-app-argon-config-18.06
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git luci-theme-argon-18.06
+git clone -b 18.06 https://github.com/jerrykuku/luci-app-argon-config.git luci-app-argon-config-18.06
 
 # Add subconverter
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
