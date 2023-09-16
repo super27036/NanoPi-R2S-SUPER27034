@@ -61,17 +61,17 @@ svn export https://github.com/linkease/nas-packages/trunk/network/services/ddnst
 git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner
 
 # Add luci-app-oled (R2S Only)
-git clone --depth=1 https://github.com/NateLol/luci-app-oled
+# git clone --depth=1 https://github.com/NateLol/luci-app-oled
 
 # Add ServerChan
-git clone --depth=1 https://github.com/tty228/luci-app-serverchan
+# git clone --depth=1 https://github.com/tty228/luci-app-serverchan
 
 # Add luci-app-dockerman
-rm -rf ../../customfeeds/luci/collections/luci-lib-docker
-rm -rf ../../customfeeds/luci/applications/luci-app-docker
-rm -rf ../../customfeeds/luci/applications/luci-app-dockerman
-git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
-git clone --depth=1 https://github.com/lisaac/luci-lib-docker
+# rm -rf ../../customfeeds/luci/collections/luci-lib-docker
+# rm -rf ../../customfeeds/luci/applications/luci-app-docker
+# rm -rf ../../customfeeds/luci/applications/luci-app-dockerman
+# git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
+# git clone --depth=1 https://github.com/lisaac/luci-lib-docker
 
 # Add luci-theme
 git clone https://github.com/DHDAXCW/theme
@@ -124,6 +124,7 @@ popd
 # Change default shell to zsh
 sed -i 's/\/bin\/ash/\/usr\/bin\/zsh/g' package/base-files/files/etc/passwd
 # sed -i 's/5.15/5.10/g' target/linux/rockchip/Makefile
+
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.5.1/g' package/base-files/files/bin/config_generate
 # Modify default hosename
