@@ -12,8 +12,8 @@ on:
   repository_dispatch:
   workflow_dispatch:
 
-  schedule:
-    - cron: '10 22 * * 5,' # china time 7:23am in the morning, Houston time.
+  # schedule:
+   #  - cron: '10 22 * * 5,' # china time 7:23am in the morning, Houston time.
 
 env:
   REPO_URL: https://github.com/DHDAXCW/lede-rockchip
