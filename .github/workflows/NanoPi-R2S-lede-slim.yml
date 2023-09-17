@@ -201,7 +201,8 @@ jobs:
           echo "此固件为自己私用，请勿下载使用
                 lede = 使用coolsnowwolf的lede仓库
                 DHDAXCW = 使用DHDAXCW的修改后仓库
-                slim = 精简版" >> release.txt
+                slim = 精简版
+                stable = 稳定版" >> release.txt
           echo "status=success" >> $GITHUB_OUTPUT
           
     - name: Upload firmware to release
