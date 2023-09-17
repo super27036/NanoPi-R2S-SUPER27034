@@ -80,9 +80,8 @@ rm -rf ../../customfeeds/luci/themes/luci-theme-argon
 rm -rf ../../customfeeds/luci/themes/luci-theme-argon-mod
 rm -rf ../../customfeeds/luci/applications/luci-app-argon-config
 
-mkdir luci-theme-argon-18.06 luci-app-argon-config-18.06
-git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon.git luci-theme-argon-18.06
-git clone -b 18.06 https://github.com/jerrykuku/luci-app-argon-config.git luci-app-argon-config-18.06
+git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon 
+git clone -b 18.06 https://github.com/jerrykuku/luci-app-argon-config
 
 # Add subconverter
 git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
