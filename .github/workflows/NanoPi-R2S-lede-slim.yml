@@ -13,7 +13,8 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: '10 22 * * 0,' # china time 7:23am in the morning, Houston time.
+    - cron: '0 5 * * 1' # china time 1pm every Monday
+
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
