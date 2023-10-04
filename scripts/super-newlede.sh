@@ -28,7 +28,7 @@ svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-irqbalance
 # Add luci-app-passwall
 mkdir passwall passwall-packages passwall-luci
 git clone https://github.com/xiaorouji/openwrt-passwall passwall
-git clone https://github.com/xiaorouji/openwrt-passwall-packages passwall-packages
+git clone https://github.com/super27036/openwrt-passwall-packages passwall-packages
 # git clone -b luci https://github.com/xiaorouji/openwrt-passwall passwall-luci
 
 # git clone https://github.com/xiaorouji/openwrt-passwall
