@@ -17,13 +17,13 @@ mkdir package/community
 pushd package/community
 
 # Add Lienol's Packages
-## git clone --depth=1 https://github.com/Lienol/openwrt-package
-## rm -rf ../../customfeeds/luci/applications/luci-app-kodexplorer
-## rm -rf openwrt-package/verysync
-## rm -rf openwrt-package/luci-app-verysync
+git clone --depth=1 https://github.com/Lienol/openwrt-package
+rm -rf ../../customfeeds/luci/applications/luci-app-kodexplorer
+rm -rf openwrt-package/verysync
+rm -rf openwrt-package/luci-app-verysync
 
 # Add luci-app-irqbalance by QiuSimons https://github.com/QiuSimons/OpenWrt-Add
-svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-irqbalance
+## svn export https://github.com/QiuSimons/OpenWrt-Add/trunk/luci-app-irqbalance
 
 # Add luci-app-passwall
 mkdir passwall passwall-packages passwall2
@@ -43,17 +43,17 @@ git clone --depth=1 https://github.com/jerrykuku/lua-maxminddb.git
 git clone --depth=1 https://github.com/jerrykuku/luci-app-vssr
 
 # Add luci-proto-minieap
-git clone --depth=1 https://github.com/ysc3839/luci-proto-minieap
+## git clone --depth=1 https://github.com/ysc3839/luci-proto-minieap
 
 # Add OpenClash
 svn export https://github.com/vernesong/OpenClash/trunk/luci-app-openclash
 
 # Add ddnsto & linkease
-svn export https://github.com/linkease/nas-packages-luci/trunk/luci/luci-app-ddnsto
-svn export https://github.com/linkease/nas-packages/trunk/network/services/ddnsto
+## svn export https://github.com/linkease/nas-packages-luci/trunk/luci/luci-app-ddnsto
+## svn export https://github.com/linkease/nas-packages/trunk/network/services/ddnsto
 
 # Add luci-app-onliner (need luci-app-nlbwmon)
-git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner
+## git clone --depth=1 https://github.com/rufengsuixing/luci-app-onliner
 
 # Add luci-app-oled (R2S Only)
 # git clone --depth=1 https://github.com/NateLol/luci-app-oled
@@ -79,7 +79,7 @@ git clone -b 18.06 https://github.com/jerrykuku/luci-theme-argon
 git clone -b 18.06 https://github.com/jerrykuku/luci-app-argon-config
 
 # Add subconverter
-git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
+## git clone --depth=1 https://github.com/tindy2013/openwrt-subconverter
 
 # Add luci-app-smartdns & smartdns
 svn export https://github.com/281677160/openwrt-package/trunk/luci-app-smartdns
@@ -90,23 +90,23 @@ svn export https://github.com/msylgj/OpenWrt_luci-app/trunk/luci-app-services-wo
 # Add apk (Apk Packages Manager)
 svn export https://github.com/openwrt/packages/trunk/utils/apk
 
-# Add luci-app-poweroff
+# Add luci-app-poweroff 关机
 git clone --depth=1 https://github.com/esirplayground/luci-app-poweroff
 
 # Add OpenAppFilter
 git clone --depth=1 https://github.com/destan19/OpenAppFilter
 
-# Add luci-aliyundrive-webdav
-rm -rf ../../customfeeds/luci/applications/luci-app-aliyundrive-webdav
-rm -rf ../../customfeeds/packages/multimedia/aliyundrive-webdav
-svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav
-svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav
-popd
+# Add luci-aliyundrive-webdav 阿里云盘
+## rm -rf ../../customfeeds/luci/applications/luci-app-aliyundrive-webdav
+## rm -rf ../../customfeeds/packages/multimedia/aliyundrive-webdav
+## svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/aliyundrive-webdav
+## svn export https://github.com/messense/aliyundrive-webdav/trunk/openwrt/luci-app-aliyundrive-webdav
+## popd
 
-# Add Pandownload
-pushd package/lean
-svn export https://github.com/immortalwrt/packages/trunk/net/pandownload-fake-server
-popd
+# Add Pandownload 百度网盘
+## pushd package/lean
+## svn export https://github.com/immortalwrt/packages/trunk/net/pandownload-fake-server
+## popd
 
 # Mod zzz-default-settings
 pushd package/lean/default-settings/files
@@ -136,6 +136,6 @@ sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/$1$S2TRFyMU$E8fE0RRK
 sed -i 's/def_bool y/def_bool n/g' config/Config-build.in
 
 # 风扇脚本
-sed -i "s/enabled '0'/enabled '1'/g" feeds/packages/utils/irqbalance/files/irqbalance.config
-wget -P target/linux/rockchip/armv8/base-files/etc/init.d/ https://github.com/friendlyarm/friendlywrt/raw/master-v19.07.1/target/linux/rockchip-rk3328/base-files/etc/init.d/fa-rk3328-pwmfan
-wget -P target/linux/rockchip/armv8/base-files/usr/bin/ https://github.com/friendlyarm/friendlywrt/raw/master-v19.07.1/target/linux/rockchip-rk3328/base-files/usr/bin/start-rk3328-pwm-fan.sh
+## sed -i "s/enabled '0'/enabled '1'/g" feeds/packages/utils/irqbalance/files/irqbalance.config
+## wget -P target/linux/rockchip/armv8/base-files/etc/init.d/ https://github.com/friendlyarm/friendlywrt/raw/master-v19.07.1/target/linux/rockchip-rk3328/base-files/etc/init.d/fa-rk3328-pwmfan
+## wget -P target/linux/rockchip/armv8/base-files/usr/bin/ https://github.com/friendlyarm/friendlywrt/raw/master-v19.07.1/target/linux/rockchip-rk3328/base-files/usr/bin/start-rk3328-pwm-fan.sh
