@@ -11,8 +11,8 @@ name: R2S-R3S-DHDAXCW-super-home-alt
 on: 
   repository_dispatch:
   workflow_dispatch:
-  schedule:
-    - cron: '0 5 1 * *' # 1st every month
+  #schedule:
+    #- cron: '0 5 1 * *' # 1st every month
 
 env:
   REPO_URL: https://github.com/DHDAXCW/lede-rockchip
