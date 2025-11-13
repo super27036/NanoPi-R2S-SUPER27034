@@ -106,7 +106,6 @@ jobs:
         cd $OPENWRTROOT
         ../$DIY_SH
         ../scripts/modify-default.sh
-        ../scripts/preset-clash-core.sh arm64
         ../scripts/preset-terminal-tools.sh
         make defconfig
   
