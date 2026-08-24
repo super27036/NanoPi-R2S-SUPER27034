@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: R2S-DH-home-2025
+name: R2S-DH-home-2026
 
 on: 
   repository_dispatch:
