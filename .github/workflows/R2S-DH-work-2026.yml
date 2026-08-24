@@ -6,7 +6,7 @@
 # Blog: https://p3terx.com
 #=================================================
 
-name: R2S-DH-work-2025
+name: R2S-DH-work-2026
 
 on: 
   repository_dispatch:
